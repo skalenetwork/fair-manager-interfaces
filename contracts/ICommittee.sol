@@ -2,7 +2,7 @@
 
 /**
  *   ICommittee.sol - playa-manager
- *   Copyright (C) 2021-Present SKALE Labs
+ *   Copyright (C) 2025-Present SKALE Labs
  *   @author Dmytro Stebaiev
  *
  *   playa-manager is free software: you can redistribute it and/or modify
@@ -21,6 +21,20 @@
 
 pragma solidity >=0.8.19 <0.9.0;
 
+import {NodeId} from "./INodes.sol";
+import {IDKG} from "./IDKG.sol";
+
+type CommitteeIndex is uint256;
+type Timestamp is uint256;
 
 interface ICommittee {
+    struct Committee {
+        NodeId[] nodes;
+        IDKG.G2Point commonPublicKey;
+        Timestamp startingTimestamp;
+    }
+
+    function select() external;
+    function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory);
+    function getActiveCommitteeIndex() external view returns (CommitteeIndex);
 }

@@ -2,7 +2,7 @@
 
 /**
  *   IStatus.sol - playa-manager
- *   Copyright (C) 2021-Present SKALE Labs
+ *   Copyright (C) 2025-Present SKALE Labs
  *   @author Dmytro Stebaiev
  *
  *   playa-manager is free software: you can redistribute it and/or modify
@@ -21,6 +21,12 @@
 
 pragma solidity >=0.8.19 <0.9.0;
 
+import {NodeId} from "./INodes.sol";
 
-interface IStaking {
+type Duration is uint256;
+
+interface IStatus {
+    function alive() external;
+    function setHeartbeatInterval(Duration interval) external;
+    function isHealthy(NodeId nodeId) external view returns (bool);
 }

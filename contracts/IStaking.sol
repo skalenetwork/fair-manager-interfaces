@@ -2,7 +2,7 @@
 
 /**
  *   IStaking.sol - playa-manager
- *   Copyright (C) 2021-Present SKALE Labs
+ *   Copyright (C) 2025-Present SKALE Labs
  *   @author Dmytro Stebaiev
  *
  *   playa-manager is free software: you can redistribute it and/or modify
@@ -23,4 +23,7 @@ pragma solidity >=0.8.19 <0.9.0;
 
 
 interface IStaking {
+    function stake() external;
+    function unstake(uint256 value) external;
+    function getStakedAmount() external view returns (uint256);
 }

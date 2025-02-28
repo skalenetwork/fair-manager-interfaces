@@ -2,7 +2,7 @@
 
 /**
  *   INodes.sol - playa-manager
- *   Copyright (C) 2021-Present SKALE Labs
+ *   Copyright (C) 2025-Present SKALE Labs
  *   @author Dmytro Stebaiev
  *
  *   playa-manager is free software: you can redistribute it and/or modify
@@ -21,6 +21,29 @@
 
 pragma solidity >=0.8.19 <0.9.0;
 
+type NodeId is uint256;
 
 interface INodes {
+
+    struct Node {
+        NodeId id;
+        uint256 port;
+        bytes ip;
+        address nodeAddress;
+        bytes32[2] nodePublicKey;
+    }
+
+    event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint256 port, NodeType nodeType);
+
+    function registerNode(
+        bytes calldata ip,
+        uint256 port
+    ) external;
+
+    function registerPassiveNode(
+        bytes calldata ip,
+        uint256 port
+    ) external;
+
+    function getNode(NodeId nodeId) external view returns (Node memory);
 }

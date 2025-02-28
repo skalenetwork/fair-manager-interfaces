@@ -2,7 +2,7 @@
 
 /**
  *   IDKG.sol - playa-manager
- *   Copyright (C) 2021-Present SKALE Labs
+ *   Copyright (C) 2025-Present SKALE Labs
  *   @author Dmytro Stebaiev
  *
  *   playa-manager is free software: you can redistribute it and/or modify
@@ -21,6 +21,28 @@
 
 pragma solidity >=0.8.19 <0.9.0;
 
+type DKGId is bytes32;
 
 interface IDKG {
+    struct Fp2Point {
+        uint a;
+        uint b;
+    }
+
+    struct G2Point {
+        Fp2Point x;
+        Fp2Point y;
+    }
+
+    struct KeyShare {
+        bytes32[2] publicKey;
+        bytes32 share;
+    }
+
+    function alright() external;
+    function broadcast(
+        G2Point[] memory verificationVector,
+        KeyShare[] memory secretKeyContribution
+    ) external;
+    function generate() external returns (DKGId);
 }
