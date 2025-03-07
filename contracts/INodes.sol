@@ -33,7 +33,7 @@ interface INodes {
         bytes32[2] nodePublicKey;
     }
 
-    event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint256 port, NodeType nodeType);
+    event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint256 port);
 
     function registerNode(
         bytes calldata ip,
