@@ -1,0 +1,38 @@
+name: Build and test
+on: [push, pull_request]
+
+env:
+  NODE_VERSION: 22
+  PYTHON_VERSION: 3.12
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'yarn'
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+        cache-dependency-path: '/scripts/requirements.txt'
+
+    - name: Install project
+      run: yarn
+
+    - name: Install slither
+      run: pip3 install -r scripts/requirements.txt
+
+    - name: Show slither version
+      run: slither --version
+
+    - name: lint
+      run: yarn fullCheck
