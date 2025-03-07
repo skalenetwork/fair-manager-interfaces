@@ -19,7 +19,7 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pragma solidity >=0.8.19 <0.9.0;
+pragma solidity >=0.8.24 <0.9.0;
 
 import {NodeId} from "./INodes.sol";
 
@@ -28,5 +28,5 @@ type Duration is uint256;
 interface IStatus {
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
-    function isHealthy(NodeId nodeId) external view returns (bool);
+    function isHealthy(NodeId nodeId) external view returns (bool isHealthy);
 }

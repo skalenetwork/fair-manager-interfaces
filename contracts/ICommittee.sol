@@ -19,10 +19,11 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pragma solidity >=0.8.19 <0.9.0;
+pragma solidity ^0.8.24 <0.9.0;
 
-import {NodeId} from "./INodes.sol";
 import {IDKG} from "./IDKG.sol";
+import {NodeId} from "./INodes.sol";
+
 
 type CommitteeIndex is uint256;
 type Timestamp is uint256;
@@ -35,6 +36,6 @@ interface ICommittee {
     }
 
     function select() external;
-    function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory);
-    function getActiveCommitteeIndex() external view returns (CommitteeIndex);
+    function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
+    function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
 }

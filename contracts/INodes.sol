@@ -19,7 +19,7 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pragma solidity >=0.8.19 <0.9.0;
+pragma solidity >=0.8.24 <0.9.0;
 
 type NodeId is uint256;
 
@@ -45,5 +45,5 @@ interface INodes {
         uint256 port
     ) external;
 
-    function getNode(NodeId nodeId) external view returns (Node memory);
+    function getNode(NodeId nodeId) external view returns (Node memory node);
 }

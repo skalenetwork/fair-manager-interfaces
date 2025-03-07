@@ -19,11 +19,11 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pragma solidity >=0.8.19 <0.9.0;
+pragma solidity >=0.8.24 <0.9.0;
 
 
 interface IStaking {
     function stake() external;
     function unstake(uint256 value) external;
-    function getStakedAmount() external view returns (uint256);
+    function getStakedAmount() external view returns (uint256 amount);
 }

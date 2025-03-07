@@ -19,14 +19,14 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pragma solidity >=0.8.19 <0.9.0;
+pragma solidity >=0.8.24 <0.9.0;
 
 type DKGId is bytes32;
 
 interface IDKG {
     struct Fp2Point {
-        uint a;
-        uint b;
+        uint256 a;
+        uint256 b;
     }
 
     struct G2Point {
@@ -44,5 +44,5 @@ interface IDKG {
         G2Point[] memory verificationVector,
         KeyShare[] memory secretKeyContribution
     ) external;
-    function generate() external returns (DKGId);
+    function generate() external returns (DKGId dkgId);
 }
