@@ -23,7 +23,7 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
         cache: 'pip'
-        cache-dependency-path: '/scripts/requirements.txt'
+        cache-dependency-path: 'scripts/requirements.txt'
 
     - name: Install project
       run: yarn
