@@ -27,3 +27,5 @@ jobs:
 
     - name: slither
       uses: crytic/slither-action@v0.4.0
+      with:
+        node-version: ${{ env.NODE_VERSION }}
