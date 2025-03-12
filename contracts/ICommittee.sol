@@ -19,6 +19,8 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+// cspell:words IDKG
+
 pragma solidity ^0.8.24 <0.9.0;
 
 import {IDKG} from "./IDKG.sol";
