@@ -25,4 +25,5 @@ jobs:
     - name: lint
       run: yarn fullCheck
 
-    - uses: crytic/slither-action@v0.4.0
+    - name: slither
+      uses: crytic/slither-action@v0.4.0
