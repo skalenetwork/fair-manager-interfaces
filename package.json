@@ -1,6 +1,6 @@
 {
   "name": "playa-manager-interfaces",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "packageManager": "yarn@4.6.0",
   "devDependencies": {
     "@types/node": ">=18.0.0",
@@ -13,7 +13,8 @@
   "scripts": {
     "compile": "yarn hardhat compile",
     "cspell": "yarn exec cspell .",
-    "fullCheck": "yarn lint && yarn cspell && yarn slither",
-    "lint": "yarn solhint 'contracts/**/*.sol'"
+    "fullCheck": "yarn lint && yarn cspell",
+    "lint": "yarn solhint 'contracts/**/*.sol'",
+    "slither": "slither ."
   }
 }
