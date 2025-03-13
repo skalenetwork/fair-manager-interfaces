@@ -28,5 +28,5 @@ type Duration is uint256;
 interface IStatus {
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
-    function isHealthy(NodeId nodeId) external view returns (bool isHealthy);
+    function isHealthy(NodeId nodeId) external view returns (bool healthy);
 }
