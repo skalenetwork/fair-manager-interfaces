@@ -17,6 +17,6 @@
     "hooks": "git config core.hooksPath .githooks",
     "lint": "yarn solhint 'contracts/**/*.sol'",
     "no-hooks": "git config core.hooksPath .git/hooks",
-    "slither": "slither ."
+    "slither": "yarn compile && slither --hardhat-ignore-compile ."
   }
 }

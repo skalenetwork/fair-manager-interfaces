@@ -19,7 +19,7 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pragma solidity >=0.8.24 <0.9.0;
+pragma solidity ^0.8.24;
 
 import {NodeId} from "./INodes.sol";
 

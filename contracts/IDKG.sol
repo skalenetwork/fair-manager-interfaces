@@ -21,7 +21,7 @@
 
 // cspell:words IDKG
 
-pragma solidity >=0.8.24 <0.9.0;
+pragma solidity ^0.8.24;
 
 type DKGId is bytes32;
 
