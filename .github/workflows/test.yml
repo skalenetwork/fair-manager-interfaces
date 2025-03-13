@@ -22,6 +22,9 @@ jobs:
     - name: Install project
       run: yarn
 
+    - name: Compile
+      run: yarn compile
+
     - name: lint
       run: yarn fullCheck
 
