@@ -23,6 +23,10 @@ pragma solidity ^0.8.24;
 
 type NodeId is uint256;
 
+using {
+    _nodeIdEquals as ==
+} for NodeId global;
+
 interface INodes {
 
     struct Node {
@@ -45,4 +49,8 @@ interface INodes {
     ) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
+}
+
+function _nodeIdEquals(NodeId a, NodeId b) pure returns (bool result) {
+    return NodeId.unwrap(a) == NodeId.unwrap(b);
 }
