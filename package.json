@@ -13,7 +13,7 @@
   "scripts": {
     "compile": "yarn hardhat compile",
     "cspell": "yarn exec cspell .",
-    "fullCheck": "yarn lint && yarn cspell",
+    "fullCheck": "yarn compile && yarn lint && yarn cspell",
     "hooks": "git config core.hooksPath .githooks",
     "lint": "yarn solhint 'contracts/**/*.sol'",
     "no-hooks": "git config core.hooksPath .git/hooks",

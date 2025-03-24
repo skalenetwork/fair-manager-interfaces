@@ -19,11 +19,9 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-// cspell:words IDKG
-
 pragma solidity ^0.8.24;
 
-import {IDKG} from "./IDKG.sol";
+import {IDkg} from "./IDkg.sol";
 import {NodeId} from "./INodes.sol";
 
 
@@ -33,7 +31,7 @@ type Timestamp is uint256;
 interface ICommittee {
     struct Committee {
         NodeId[] nodes;
-        IDKG.G2Point commonPublicKey;
+        IDkg.G2Point commonPublicKey;
         Timestamp startingTimestamp;
     }
 
