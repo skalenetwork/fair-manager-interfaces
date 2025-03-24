@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 /**
- *   IDKG.sol - playa-manager
+ *   IDkg.sol - playa-manager
  *   Copyright (C) 2025-Present SKALE Labs
  *   @author Dmytro Stebaiev
  *
@@ -19,16 +19,14 @@
  *   along with playa-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-// cspell:words IDKG
-
 pragma solidity ^0.8.24;
 
 import {NodeId} from "./INodes.sol";
 
 
-type DKGId is bytes32;
+type DkgId is uint256;
 
-interface IDKG {
+interface IDkg {
     struct Fp2Point {
         uint256 a;
         uint256 b;
@@ -46,8 +44,9 @@ interface IDKG {
 
     function alright() external;
     function broadcast(
+        DkgId dkg,
         G2Point[] memory verificationVector,
         KeyShare[] memory secretKeyContribution
     ) external;
-    function generate(NodeId[] calldata nodes) external returns (DKGId dkgId);
+    function generate(NodeId[] calldata nodes) external returns (DkgId dkgId);
 }
