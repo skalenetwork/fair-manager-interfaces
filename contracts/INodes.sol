@@ -39,11 +39,10 @@ interface INodes {
         bytes calldata ip,
         uint256 port
     ) external;
-
     function registerPassiveNode(
         bytes calldata ip,
         uint256 port
     ) external;
-
     function getNode(NodeId nodeId) external view returns (Node memory node);
+    function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
 }

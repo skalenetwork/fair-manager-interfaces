@@ -23,6 +23,9 @@
 
 pragma solidity ^0.8.24;
 
+import {NodeId} from "./INodes.sol";
+
+
 type DKGId is bytes32;
 
 interface IDKG {
@@ -46,5 +49,5 @@ interface IDKG {
         G2Point[] memory verificationVector,
         KeyShare[] memory secretKeyContribution
     ) external;
-    function generate() external returns (DKGId dkgId);
+    function generate(NodeId[] calldata nodes) external returns (DKGId dkgId);
 }
