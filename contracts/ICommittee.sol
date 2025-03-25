@@ -21,7 +21,7 @@
 
 pragma solidity ^0.8.24;
 
-import {IDkg} from "./IDkg.sol";
+import {DkgId, IDkg} from "./IDkg.sol";
 import {NodeId} from "./INodes.sol";
 
 
@@ -36,6 +36,7 @@ interface ICommittee {
     }
 
     function select() external;
+    function processSuccessfulDkg(DkgId dkg) external;
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
 }

@@ -42,7 +42,7 @@ interface IDkg {
         bytes32 share;
     }
 
-    function alright() external;
+    function alright(DkgId dkg) external;
     function broadcast(
         DkgId dkg,
         G2Point[] memory verificationVector,
