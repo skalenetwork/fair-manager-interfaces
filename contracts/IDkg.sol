@@ -21,7 +21,8 @@
 
 pragma solidity ^0.8.24;
 
-import {NodeId} from "./INodes.sol";
+import {ICommittee} from "./ICommittee.sol";
+import {INodes, NodeId} from "./INodes.sol";
 
 
 type DkgId is uint256;
@@ -42,6 +43,7 @@ interface IDkg {
         bytes32 share;
     }
 
+    function initialize(ICommittee committeeAddress, INodes nodesAddress) external;
     function alright(DkgId dkg) external;
     function broadcast(
         DkgId dkg,
