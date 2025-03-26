@@ -34,7 +34,6 @@ interface INodes {
         uint256 port;
         bytes ip;
         address nodeAddress;
-        bytes32[2] nodePublicKey;
     }
 
     event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint256 port);
