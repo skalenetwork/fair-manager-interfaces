@@ -31,10 +31,10 @@ interface INodes {
 
     struct Node {
         NodeId id;
-        uint16 port;
         bytes ip;
         address nodeAddress;
         string domainName;
+        uint16 port;
     }
 
     event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
@@ -50,10 +50,15 @@ interface INodes {
 
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
-
+    function requestChangeAddress(NodeId nodeId, address newAddress) external;
+    function confirmAddressChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
 }
+
+// Slither flags as unused by interfaces but code is used
+// in playa-manager implementation to overload == operant
+
 // slither-disable-start dead-code
 function _nodeIdEquals(NodeId a, NodeId b) pure returns (bool result) {
     return NodeId.unwrap(a) == NodeId.unwrap(b);
