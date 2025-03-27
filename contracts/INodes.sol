@@ -32,8 +32,8 @@ interface INodes {
     struct Node {
         NodeId id;
         bytes ip;
-        address nodeAddress;
         string domainName;
+        address nodeAddress;
         uint16 port;
     }
 

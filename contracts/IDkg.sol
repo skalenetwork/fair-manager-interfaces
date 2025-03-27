@@ -51,4 +51,5 @@ interface IDkg {
         KeyShare[] memory secretKeyContribution
     ) external;
     function generate(NodeId[] calldata nodes) external returns (DkgId dkgId);
+    function isNodeBroadcasted(DkgId dkg, NodeId node) external view returns (bool broadcasted);
 }

@@ -5,6 +5,7 @@
 
     "explicit-types": "error",
     "imports-order": "error",
-    "gas-named-return-values": "error"
+    "gas-named-return-values": "error",
+    "gas-struct-packing": "error"
   }
 }
