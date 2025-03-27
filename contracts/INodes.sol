@@ -31,25 +31,31 @@ interface INodes {
 
     struct Node {
         NodeId id;
-        uint256 port;
+        uint16 port;
         bytes ip;
         address nodeAddress;
+        string domainName;
     }
 
-    event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint256 port);
+    event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
 
     function registerNode(
         bytes calldata ip,
-        uint256 port
+        uint16 port
     ) external;
     function registerPassiveNode(
         bytes calldata ip,
-        uint256 port
+        uint16 port
     ) external;
+
+    function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
+    function setDomainName(NodeId nodeId, string calldata name) external;
+
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
 }
-
+// slither-disable-start dead-code
 function _nodeIdEquals(NodeId a, NodeId b) pure returns (bool result) {
     return NodeId.unwrap(a) == NodeId.unwrap(b);
 }
+// slither-disable-end dead-code
