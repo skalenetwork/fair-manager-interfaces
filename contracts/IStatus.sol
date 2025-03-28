@@ -21,12 +21,13 @@
 
 pragma solidity ^0.8.24;
 
-import {NodeId} from "./INodes.sol";
+import {INodes, NodeId} from "./INodes.sol";
 
 type Duration is uint256;
 
 interface IStatus {
-    function initialize(address initialAuthority) external;
+
+    function initialize(address initialAuthority, INodes nodesAddress) external;
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
     function isHealthy(NodeId nodeId) external view returns (bool healthy);
