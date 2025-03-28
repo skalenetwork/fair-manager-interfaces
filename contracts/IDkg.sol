@@ -43,7 +43,6 @@ interface IDkg {
         bytes32 share;
     }
 
-    function initialize(ICommittee committeeAddress, INodes nodesAddress) external;
     function alright(DkgId dkg) external;
     function broadcast(
         DkgId dkg,
