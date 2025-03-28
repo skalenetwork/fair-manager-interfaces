@@ -35,6 +35,7 @@ interface ICommittee {
         Timestamp startingTimestamp;
     }
 
+    function initialize(address initialAuthority) external;
     function select() external;
     function processSuccessfulDkg(DkgId dkg) external;
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);

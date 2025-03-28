@@ -23,6 +23,7 @@ pragma solidity ^0.8.24;
 
 
 interface IStaking {
+    function initialize(address initialAuthority) external;
     function stake() external;
     function retrieve(uint256 value) external;
     function getStakedAmount() external view returns (uint256 amount);

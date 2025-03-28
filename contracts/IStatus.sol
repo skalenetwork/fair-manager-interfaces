@@ -26,6 +26,7 @@ import {NodeId} from "./INodes.sol";
 type Duration is uint256;
 
 interface IStatus {
+    function initialize(address initialAuthority) external;
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
     function isHealthy(NodeId nodeId) external view returns (bool healthy);
