@@ -21,6 +21,8 @@
 
 pragma solidity ^0.8.24;
 
+import { ICommittee } from "./ICommittee.sol";
+
 type NodeId is uint256;
 
 using {
@@ -42,7 +44,7 @@ interface INodes {
     event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
     event NodeIpChanged(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
 
-    function initialize(address initialAuthority) external;
+    function initialize(address initialAuthority, ICommittee committeeAddress) external;
     function registerNode(
         bytes calldata ip,
         uint16 port
@@ -58,6 +60,7 @@ interface INodes {
     function confirmAddressChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
+    function getPassiveNodeIds(address nodeAddress) external view returns (uint256[] memory nodeIds);
 }
 
 // Slither flags as unused by interfaces but code is used

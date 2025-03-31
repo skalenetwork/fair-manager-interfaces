@@ -40,4 +40,5 @@ interface ICommittee {
     function processSuccessfulDkg(DkgId dkg) external;
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
+    function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
 }
