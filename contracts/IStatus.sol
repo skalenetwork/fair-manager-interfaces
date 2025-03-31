@@ -27,8 +27,14 @@ type Duration is uint256;
 
 interface IStatus {
 
+    event HeartbeatIntervalChanged(Duration interval);
+    event HeartbeatSignal(NodeId indexed nodeId, uint256 timestamp);
+
     function initialize(address initialAuthority, INodes nodesAddress) external;
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
+    function whitelistNode(NodeId nodeId) external;
+    function removeNodeFromWhitelist(NodeId nodeId) external;
     function isHealthy(NodeId nodeId) external view returns (bool healthy);
+    function getNodesEligibleForCommittee() external view returns (NodeId[] memory nodeIds);
 }
