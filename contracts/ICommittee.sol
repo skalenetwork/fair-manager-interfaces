@@ -41,4 +41,5 @@ interface ICommittee {
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
     function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
+    function newNodeCreated(NodeId nodeId) external;
 }
