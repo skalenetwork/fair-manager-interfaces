@@ -37,4 +37,5 @@ interface IStatus {
     function removeNodeFromWhitelist(NodeId nodeId) external;
     function isHealthy(NodeId nodeId) external view returns (bool healthy);
     function getNodesEligibleForCommittee() external view returns (NodeId[] memory nodeIds);
+    function getWhitelistedNodes() external view returns (uint256[] memory nodeIds);
 }
