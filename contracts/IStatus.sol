@@ -33,8 +33,8 @@ interface IStatus {
     function initialize(address initialAuthority, INodes nodesAddress) external;
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
-    function whitelistNode(NodeId nodeId) external;
-    function removeNodeFromWhitelist(NodeId nodeId) external;
+    function whitelistNode(address nodeAddress) external;
+    function removeNodeFromWhitelist(address nodeAddress) external;
     function isHealthy(NodeId nodeId) external view returns (bool healthy);
     function getNodesEligibleForCommittee() external view returns (NodeId[] memory nodeIds);
     function getWhitelistedNodes() external view returns (uint256[] memory nodeIds);
