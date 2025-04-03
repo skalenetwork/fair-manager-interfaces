@@ -32,6 +32,7 @@ type Timestamp is uint256;
 interface ICommittee {
     struct Committee {
         NodeId[] nodes;
+        DkgId dkg;
         IDkg.G2Point commonPublicKey;
         Timestamp startingTimestamp;
     }
@@ -40,6 +41,7 @@ interface ICommittee {
     function select() external;
     function processSuccessfulDkg(DkgId dkg) external;
     function newNodeCreated(NodeId nodeId) external;
+    function setCommitteeSize(uint256 size) external;
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
     function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
