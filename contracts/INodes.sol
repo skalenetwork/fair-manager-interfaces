@@ -60,8 +60,8 @@ interface INodes {
     function confirmAddressChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
-    function getPassiveNodeIds(address nodeAddress) external view returns (uint256[] memory nodeIds);
-    function getActiveNodesIds() external view returns (uint256[] memory nodeIds);
+    function getPassiveNodeIds(address nodeAddress) external view returns (NodeId[] memory nodeIds);
+    function getActiveNodesIds() external view returns (NodeId[] memory nodeIds);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
 }
 
