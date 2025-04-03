@@ -38,8 +38,8 @@ interface ICommittee {
     function initialize(address initialAuthority) external;
     function select() external;
     function processSuccessfulDkg(DkgId dkg) external;
+    function newNodeCreated(NodeId nodeId) external;
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
     function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
-    function newNodeCreated(NodeId nodeId) external;
 }
