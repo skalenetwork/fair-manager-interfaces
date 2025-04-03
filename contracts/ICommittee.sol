@@ -37,7 +37,11 @@ interface ICommittee {
         Timestamp startingTimestamp;
     }
 
-    function initialize(address initialAuthority, INodes nodesAddress, IStatus statusAddress) external;
+    function initialize(
+        address initialAuthority,
+        IDkg dkgAddress,
+        INodes nodesAddress,
+        IStatus statusAddress) external;
     function select() external;
     function processSuccessfulDkg(DkgId dkg) external;
     function newNodeCreated(NodeId nodeId) external;
