@@ -22,7 +22,8 @@
 pragma solidity ^0.8.24;
 
 import {DkgId, IDkg} from "./IDkg.sol";
-import {NodeId} from "./INodes.sol";
+import {INodes, NodeId} from "./INodes.sol";
+import {IStatus} from "./IStatus.sol";
 
 
 type CommitteeIndex is uint256;
@@ -35,7 +36,7 @@ interface ICommittee {
         Timestamp startingTimestamp;
     }
 
-    function initialize(address initialAuthority) external;
+    function initialize(address initialAuthority, INodes nodesAddress, IStatus statusAddress) external;
     function select() external;
     function processSuccessfulDkg(DkgId dkg) external;
     function newNodeCreated(NodeId nodeId) external;
