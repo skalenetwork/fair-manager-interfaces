@@ -29,6 +29,10 @@ import {Duration, IStatus} from "./IStatus.sol";
 type CommitteeIndex is uint256;
 type Timestamp is uint256;
 
+using {
+    _timestampLess as <
+} for Timestamp global;
+
 interface ICommittee {
     struct Committee {
         NodeId[] nodes;
@@ -51,3 +55,12 @@ interface ICommittee {
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
     function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
 }
+
+// Slither flags as unused by interfaces but code is used
+// in playa-manager implementation to overload == operant
+
+// slither-disable-start dead-code
+function _timestampLess(Timestamp a, Timestamp b) pure returns (bool less) {
+    return Timestamp.unwrap(a) < Timestamp.unwrap(b);
+}
+// slither-disable-end dead-code
