@@ -56,7 +56,7 @@ interface ICommittee {
 }
 
 // Slither flags as unused by interfaces but code is used
-// in playa-manager implementation to overload == operant
+// in playa-manager implementation to overload < operant
 
 // slither-disable-start dead-code
 function _timestampLess(Timestamp a, Timestamp b) pure returns (bool less) {
