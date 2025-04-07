@@ -22,24 +22,44 @@
 pragma solidity ^0.8.24;
 
 import {DkgId, IDkg} from "./IDkg.sol";
-import {NodeId} from "./INodes.sol";
+import {INodes, NodeId} from "./INodes.sol";
+import {Duration, IStatus} from "./IStatus.sol";
 
 
 type CommitteeIndex is uint256;
 type Timestamp is uint256;
 
+using {
+    _timestampLess as <
+} for Timestamp global;
+
 interface ICommittee {
     struct Committee {
         NodeId[] nodes;
+        DkgId dkg;
         IDkg.G2Point commonPublicKey;
         Timestamp startingTimestamp;
     }
 
     function initialize(address initialAuthority) external;
-    function select() external;
-    function processSuccessfulDkg(DkgId dkg) external;
-    function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
-    function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
-    function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
     function newNodeCreated(NodeId nodeId) external;
+    function processSuccessfulDkg(DkgId dkg) external;
+    function select() external;
+    function setCommitteeSize(uint256 size) external;
+    function setDkg(IDkg dkgAddress) external;
+    function setNodes(INodes nodesAddress) external;
+    function setStatus(IStatus statusAddress) external;
+    function setTransitionDelay(Duration delay) external;
+    function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
+    function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
+    function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
 }
+
+// Slither flags as unused by interfaces but code is used
+// in playa-manager implementation to overload < operant
+
+// slither-disable-start dead-code
+function _timestampLess(Timestamp a, Timestamp b) pure returns (bool less) {
+    return Timestamp.unwrap(a) < Timestamp.unwrap(b);
+}
+// slither-disable-end dead-code

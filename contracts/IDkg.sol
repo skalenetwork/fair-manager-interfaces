@@ -27,6 +27,10 @@ import {INodes, NodeId} from "./INodes.sol";
 
 type DkgId is uint256;
 
+using {
+    _dkgIdEquals as ==
+} for DkgId global;
+
 interface IDkg {
     struct Fp2Point {
         uint256 a;
@@ -51,5 +55,16 @@ interface IDkg {
         KeyShare[] memory secretKeyContribution
     ) external;
     function generate(NodeId[] calldata nodes) external returns (DkgId dkgId);
+    function getParticipants(DkgId dkg) external view returns (NodeId[] memory participants);
+    function getPublicKey(DkgId dkg) external view returns (G2Point memory publicKey);
     function isNodeBroadcasted(DkgId dkg, NodeId node) external view returns (bool broadcasted);
 }
+
+// Slither flags as unused by interfaces but code is used
+// in playa-manager implementation to overload == operant
+
+// slither-disable-start dead-code
+function _dkgIdEquals(DkgId a, DkgId b) pure returns (bool result) {
+    return DkgId.unwrap(a) == DkgId.unwrap(b);
+}
+// slither-disable-end dead-code
