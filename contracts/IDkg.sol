@@ -55,6 +55,7 @@ interface IDkg {
         KeyShare[] memory secretKeyContribution
     ) external;
     function generate(NodeId[] calldata nodes) external returns (DkgId dkgId);
+    function getParticipants(DkgId dkg) external view returns (NodeId[] memory participants);
     function getPublicKey(DkgId dkg) external view returns (G2Point memory publicKey);
     function isNodeBroadcasted(DkgId dkg, NodeId node) external view returns (bool broadcasted);
 }
