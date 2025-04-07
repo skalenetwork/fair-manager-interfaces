@@ -41,19 +41,18 @@ interface ICommittee {
         Timestamp startingTimestamp;
     }
 
-    function initialize(
-        address initialAuthority,
-        IDkg dkgAddress,
-        INodes nodesAddress,
-        IStatus statusAddress) external;
-    function select() external;
-    function processSuccessfulDkg(DkgId dkg) external;
+    function initialize(address initialAuthority) external;
     function newNodeCreated(NodeId nodeId) external;
+    function processSuccessfulDkg(DkgId dkg) external;
+    function select() external;
     function setCommitteeSize(uint256 size) external;
+    function setDkg(IDkg dkgAddress) external;
+    function setNodes(INodes nodesAddress) external;
+    function setStatus(IStatus statusAddress) external;
     function setTransitionDelay(Duration delay) external;
-    function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
-    function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
     function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
+    function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
+    function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
 }
 
 // Slither flags as unused by interfaces but code is used
