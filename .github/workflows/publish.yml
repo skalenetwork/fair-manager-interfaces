@@ -73,7 +73,9 @@ jobs:
     - name: Remove feature tag
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # TODO: rename @skalenetwork/flugegeheimen-interfaces with @skalenetwork/playa-manager-interfaces
       run: |
         export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
         echo "Source branch: $SOURCE_BRANCH"
-        npm dist-tag rm @skalenetwork/playa-manager-interfaces $SOURCE_BRANCH
+
+        npm dist-tag rm @skalenetwork/flugegeheimen-interfaces $SOURCE_BRANCH
