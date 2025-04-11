@@ -41,7 +41,7 @@ interface ICommittee {
         Timestamp startingTimestamp;
     }
 
-    function initialize(address initialAuthority) external;
+    function initialize(address initialAuthority, INodes nodesAddress, IDkg.G2Point memory commonPublicKey) external;
     function newNodeCreated(NodeId nodeId) external;
     function processSuccessfulDkg(DkgId dkg) external;
     function select() external;
