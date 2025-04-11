@@ -1,3 +1,3 @@
-# playa-manager-interfaces
+# interfaces
 
-Definitions of interfaces needed to integrate with playa-manager smart contracts
+More info soon
