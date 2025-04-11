@@ -1,3 +1,5 @@
+# cspell:words ncipollo
+
 name: publish
 on:
   push:
@@ -43,12 +45,11 @@ jobs:
         ( test $BRANCH = "stable" && export PRERELEASE=false ) || export PRERELEASE=true
         echo "PRERELEASE=$PRERELEASE" >> $GITHUB_ENV
 
-    # TODO: Uncomment this block to publish the package
-    # - name: Publish NPM package
-    #   run: ./scripts/publish_package.sh
-    #   env:
-    #     BRANCH: ${{ env.BRANCH }}
-    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish NPM package
+      run: ./scripts/publish_package.sh
+      env:
+        BRANCH: ${{ env.BRANCH }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Create Release
       uses: ncipollo/release-action@v1
