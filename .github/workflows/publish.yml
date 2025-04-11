@@ -1,4 +1,4 @@
-# cspell:words ncipollo
+# cspell:words ncipollo npmjs.org
 
 name: publish
 on:
@@ -77,4 +77,4 @@ jobs:
       run: |
         export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
         echo "Source branch: $SOURCE_BRANCH"
-        npm dist-tag rm @skalenetwork/flugegeheimen-interfaces $SOURCE_BRANCH
+        npm --//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN dist-tag rm @skalenetwork/flugegeheimen-interfaces $SOURCE_BRANCH
