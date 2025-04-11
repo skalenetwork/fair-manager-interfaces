@@ -1,3 +1,5 @@
+# cspell:words mondeja
+
 name: Get linked issues
 on:
   pull_request:
@@ -16,5 +18,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: PR has not linked issues
         if: join(steps.get-issues.outputs.issues) == ''
-        run: 
+        run:
           exit 1
