@@ -1,3 +1,5 @@
+# cspell:words ncipollo npmjs.org
+
 name: publish
 on:
   push:
@@ -43,12 +45,11 @@ jobs:
         ( test $BRANCH = "stable" && export PRERELEASE=false ) || export PRERELEASE=true
         echo "PRERELEASE=$PRERELEASE" >> $GITHUB_ENV
 
-    # TODO: Uncomment this block to publish the package
-    # - name: Publish NPM package
-    #   run: ./scripts/publish_package.sh
-    #   env:
-    #     BRANCH: ${{ env.BRANCH }}
-    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish NPM package
+      run: ./scripts/publish_package.sh
+      env:
+        BRANCH: ${{ env.BRANCH }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Create Release
       uses: ncipollo/release-action@v1
@@ -72,7 +73,8 @@ jobs:
     - name: Remove feature tag
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # TODO: rename @skalenetwork/professional-interfaces with @skalenetwork/playa-manager-interfaces
       run: |
         export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
         echo "Source branch: $SOURCE_BRANCH"
-        npm dist-tag rm @skalenetwork/playa-manager-interfaces $SOURCE_BRANCH
+        npm --//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN dist-tag rm @skalenetwork/professional-interfaces $SOURCE_BRANCH

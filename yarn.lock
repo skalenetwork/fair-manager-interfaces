@@ -1243,9 +1243,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skalenetwork/playa-manager-interfaces@workspace:.":
+"@skalenetwork/professional-interfaces@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@skalenetwork/playa-manager-interfaces@workspace:."
+  resolution: "@skalenetwork/professional-interfaces@workspace:."
   dependencies:
     "@types/node": "npm:>=18.0.0"
     cspell: "npm:^8.17.5"
