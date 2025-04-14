@@ -24,7 +24,7 @@ pragma solidity ^0.8.24;
 import {DkgId, IDkg} from "./IDkg.sol";
 import {INodes, NodeId} from "./INodes.sol";
 import {Duration, IStatus} from "./IStatus.sol";
-
+import {IStaking} from "./IStaking.sol";
 
 type CommitteeIndex is uint256;
 type Timestamp is uint256;
@@ -48,6 +48,7 @@ interface ICommittee {
     function processSuccessfulDkg(DkgId dkg) external;
     function select() external;
     function setCommitteeSize(uint256 size) external;
+    function setStaking(IStaking) external;
     function setDkg(IDkg dkgAddress) external;
     function setNodes(INodes nodesAddress) external;
     function setStatus(IStatus statusAddress) external;
