@@ -44,7 +44,8 @@ interface INodes {
     event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
     event NodeIpChanged(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
 
-    function initialize(address initialAuthority, ICommittee committeeAddress) external;
+    function initialize(address initialAuthority, Node[] calldata initialNodes) external;
+    function setCommittee(ICommittee committeeAddress) external;
     function registerNode(
         bytes calldata ip,
         uint16 port
