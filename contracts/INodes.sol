@@ -26,7 +26,8 @@ import { ICommittee } from "./ICommittee.sol";
 type NodeId is uint256;
 
 using {
-    _nodeIdEquals as ==
+    _nodeIdEquals as ==,
+    _nodeIdNotEquals as !=
 } for NodeId global;
 
 interface INodes {
@@ -73,5 +74,9 @@ interface INodes {
 // slither-disable-start dead-code
 function _nodeIdEquals(NodeId a, NodeId b) pure returns (bool result) {
     return NodeId.unwrap(a) == NodeId.unwrap(b);
+}
+
+function _nodeIdNotEquals(NodeId a, NodeId b) pure returns (bool result) {
+    return NodeId.unwrap(a) != NodeId.unwrap(b);
 }
 // slither-disable-end dead-code
