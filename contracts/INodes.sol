@@ -55,7 +55,6 @@ interface INodes {
         bytes calldata ip,
         uint16 port
     ) external;
-
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
     function requestChangeAddress(NodeId nodeId, address newAddress) external;
