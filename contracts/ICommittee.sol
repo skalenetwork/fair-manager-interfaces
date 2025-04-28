@@ -49,6 +49,7 @@ interface ICommittee {
     function nodeCreated(NodeId node) external;
     function nodeRemoved(NodeId node) external;
     function nodeWhitelisted(NodeId node) external;
+    function processHeartbeat(NodeId node) external;
     function processSuccessfulDkg(DkgId dkg) external;
     function select() external;
     function setCommitteeSize(uint256 size) external;
