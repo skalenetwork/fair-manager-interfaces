@@ -21,6 +21,7 @@
 
 pragma solidity ^0.8.24;
 
+import {ICommittee} from "./ICommittee.sol";
 import {INodes, NodeId} from "./INodes.sol";
 
 type Duration is uint256;
@@ -30,7 +31,7 @@ interface IStatus {
     event HeartbeatIntervalChanged(Duration interval);
     event HeartbeatSignal(NodeId indexed nodeId, uint256 timestamp);
 
-    function initialize(address initialAuthority, INodes nodesAddress) external;
+    function initialize(address initialAuthority, INodes nodesAddress, ICommittee committeeAddress) external;
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
     function whitelistNode(NodeId nodeId) external;
