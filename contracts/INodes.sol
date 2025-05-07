@@ -26,7 +26,8 @@ import { ICommittee } from "./ICommittee.sol";
 type NodeId is uint256;
 
 using {
-    _nodeIdEquals as ==
+    _nodeIdEquals as ==,
+    _nodeIdNotEquals as !=
 } for NodeId global;
 
 interface INodes {
@@ -54,7 +55,6 @@ interface INodes {
         bytes calldata ip,
         uint16 port
     ) external;
-
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
     function requestChangeAddress(NodeId nodeId, address newAddress) external;
@@ -73,5 +73,9 @@ interface INodes {
 // slither-disable-start dead-code
 function _nodeIdEquals(NodeId a, NodeId b) pure returns (bool result) {
     return NodeId.unwrap(a) == NodeId.unwrap(b);
+}
+
+function _nodeIdNotEquals(NodeId a, NodeId b) pure returns (bool result) {
+    return NodeId.unwrap(a) != NodeId.unwrap(b);
 }
 // slither-disable-end dead-code
