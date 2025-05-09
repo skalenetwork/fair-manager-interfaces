@@ -34,6 +34,7 @@ interface INodes {
 
     struct Node {
         NodeId id;
+        bytes32[2] publicKey;
         bytes ip;
         string domainName;
         address nodeAddress;
@@ -49,16 +50,18 @@ interface INodes {
     function setCommittee(ICommittee committeeAddress) external;
     function registerNode(
         bytes calldata ip,
+        bytes32[2] calldata publicKey,
         uint16 port
     ) external;
     function registerPassiveNode(
         bytes calldata ip,
+        bytes32[2] calldata publicKey,
         uint16 port
     ) external;
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
-    function requestChangeAddress(NodeId nodeId, address newAddress) external;
-    function confirmAddressChange(NodeId nodeId) external;
+    function requestChangeOwner(NodeId nodeId, bytes32[2] calldata newPublicKey) external;
+    function confirmOwnerChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
     function getPassiveNodesIds() external view returns (NodeId[] memory nodeIds);
