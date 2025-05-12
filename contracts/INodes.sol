@@ -59,7 +59,7 @@ interface INodes {
     ) external;
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
-    function requestChangeOwner(NodeId nodeId, bytes32[2] calldata newPublicKey) external;
+    function requestChangeOwner(NodeId nodeId, address newOwner) external;
     function confirmOwnerChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
