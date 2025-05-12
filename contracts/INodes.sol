@@ -37,14 +37,14 @@ interface INodes {
         bytes32[2] publicKey;
         bytes ip;
         string domainName;
-        address nodeAddress;
+        address nodeOwner;
         uint16 port;
     }
 
-    event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
-    event NodeAddressChanged(NodeId indexed nodeId, address indexed oldAddress, address indexed newAddress);
-    event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
-    event NodeIpChanged(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
+    event NodeRegistered(NodeId indexed nodeId, address indexed nodeOwner, bytes ip, uint16 port);
+    event NodeOwnerChanged(NodeId indexed nodeId, address indexed oldOwner, address indexed newOwner);
+    event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeOwner, string newName);
+    event NodeIpChanged(NodeId indexed nodeId, address indexed nodeOwner, bytes ip, uint16 port);
 
     function initialize(address initialAuthority, Node[] calldata initialNodes) external;
     function setCommittee(ICommittee committeeAddress) external;
@@ -62,10 +62,10 @@ interface INodes {
     function requestChangeOwner(NodeId nodeId, address newOwner) external;
     function confirmOwnerChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
-    function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
+    function getNodeId(address nodeOwner) external view returns (NodeId nodeId);
     function getPassiveNodesIds() external view returns (NodeId[] memory nodeIds);
     function getActiveNodesIds() external view returns (NodeId[] memory nodeIds);
-    function getPassiveNodesIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
+    function getPassiveNodesIdsForAddress(address nodeOwner) external view returns (NodeId[] memory nodeIds);
     function getOwnerChangeRequest(NodeId nodeId) external view returns(bytes32[2] memory publicKey);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
 
