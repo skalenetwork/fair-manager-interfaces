@@ -55,7 +55,6 @@ interface INodes {
     ) external;
     function registerPassiveNode(
         bytes calldata ip,
-        bytes32[2] calldata publicKey,
         uint16 port
     ) external;
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
