@@ -26,7 +26,7 @@ import {NodeId} from "./INodes.sol";
 
 interface IStaking {
     function initialize(address initialAuthority) external;
-    function stake(NodeId node) external;
+    function stake(NodeId node) external payable;
     function retrieve(NodeId node, uint256 value) external;
     function getStakedAmount() external view returns (uint256 amount);
 }
