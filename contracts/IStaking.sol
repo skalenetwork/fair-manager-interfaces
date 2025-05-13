@@ -21,11 +21,12 @@
 
 pragma solidity ^0.8.24;
 
-import {NodeId} from "./INodes.sol";
+import {ICommittee} from "./ICommittee.sol";
+import {INodes, NodeId} from "./INodes.sol";
 
 
 interface IStaking {
-    function initialize(address initialAuthority) external;
+    function initialize(address initialAuthority, ICommittee committee, INodes nodes) external;
     function stake(NodeId node) external payable;
     function retrieve(NodeId node, uint256 value) external;
     function getStakedAmount() external view returns (uint256 amount);
