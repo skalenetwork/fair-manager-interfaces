@@ -42,7 +42,7 @@ interface INodes {
     }
 
     event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
-    event NodeAddressChanged(NodeId indexed nodeId, address indexed oldAddress, address indexed newAddress);
+    event NodeOwnerChanged(NodeId indexed nodeId, address indexed oldOwner, address indexed newOwner);
     event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
     event NodeIpChanged(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
 
@@ -59,14 +59,13 @@ interface INodes {
     ) external;
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
-    function requestChangeOwner(NodeId nodeId, bytes32[2] calldata newPublicKey) external;
+    function requestChangeOwner(NodeId nodeId, address newOwner) external;
     function confirmOwnerChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
     function getPassiveNodesIds() external view returns (NodeId[] memory nodeIds);
     function getActiveNodesIds() external view returns (NodeId[] memory nodeIds);
     function getPassiveNodesIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
-    function getOwnerChangeRequest(NodeId nodeId) external view returns(bytes32[2] memory publicKey);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
 
 }
