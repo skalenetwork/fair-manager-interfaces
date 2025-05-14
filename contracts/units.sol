@@ -24,10 +24,15 @@ pragma solidity ^0.8.24;
 type Playa is uint256;
 
 using {
+    _playaAdd as +,
     _playaEqual as ==,
     _playaGreater as >,
     _playaSub as -
 } for Playa global;
+
+function _playaAdd(Playa a, Playa b) pure returns (Playa sum) {
+    return Playa.wrap(Playa.unwrap(a) + Playa.unwrap(b));
+}
 
 function _playaEqual(Playa a, Playa b) pure returns (bool equal) {
     return Playa.unwrap(a) == Playa.unwrap(b);
