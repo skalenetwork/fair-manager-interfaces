@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: AGPL-3.0-only
+
+/**
+ *   units.sol - mirage-manager
+ *   Copyright (C) 2025-Present SKALE Labs
+ *   @author Dmytro Stebaiev
+ *
+ *   mirage-manager is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU Affero General Public License as published
+ *   by the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   mirage-manager is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU Affero General Public License for more details.
+ *
+ *   You should have received a copy of the GNU Affero General Public License
+ *   along with mirage-manager.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+pragma solidity ^0.8.24;
+
+type Playa is uint256;
+
+using {
+    _playaEqual as ==,
+    _playaGreater as >,
+    _playaSub as -
+} for Playa global;
+
+function _playaEqual(Playa a, Playa b) pure returns (bool equal) {
+    return Playa.unwrap(a) == Playa.unwrap(b);
+}
+
+function _playaGreater(Playa a, Playa b) pure returns (bool greater) {
+    return Playa.unwrap(a) > Playa.unwrap(b);
+}
+
+function _playaSub(Playa a, Playa b) pure returns (Playa subtraction) {
+    return Playa.wrap(Playa.unwrap(a) - Playa.unwrap(b));
+}
