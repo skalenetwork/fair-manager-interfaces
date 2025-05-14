@@ -30,4 +30,5 @@ interface IStaking {
     function stake(NodeId node) external payable;
     function retrieve(NodeId node, uint256 value) external;
     function getStakedAmount() external view returns (uint256 amount);
+    function getStakedAmountFor(address holder) external view returns (uint256 amount);
 }
