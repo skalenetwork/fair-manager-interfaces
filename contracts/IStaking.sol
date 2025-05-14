@@ -23,12 +23,18 @@ pragma solidity ^0.8.24;
 
 import {ICommittee} from "./ICommittee.sol";
 import {INodes, NodeId} from "./INodes.sol";
+import {Playa} from "./units.sol";
 
 
 interface IStaking {
+    receive() external payable;
     function initialize(address initialAuthority, ICommittee committee, INodes nodes) external;
     function stake(NodeId node) external payable;
-    function retrieve(NodeId node, uint256 value) external;
-    function getStakedAmount() external view returns (uint256 amount);
-    function getStakedAmountFor(address holder) external view returns (uint256 amount);
+    function retrieve(NodeId node, Playa value) external;
+    function getStakedAmount() external view returns (Playa amount);
+    function getStakedAmountFor(address holder) external view returns (Playa amount);
+    function getStakedNodes() external view returns (NodeId[] memory nodes);
+    function getStakedNodesFor(address holder) external view returns (NodeId[] memory stakedNodes);
+    function getStakedToNodeAmount(NodeId node) external view returns (Playa amount);
+    function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Playa amount);
 }
