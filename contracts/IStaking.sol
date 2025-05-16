@@ -29,8 +29,12 @@ import {Playa} from "./units.sol";
 interface IStaking {
     receive() external payable;
     function initialize(address initialAuthority, ICommittee committee, INodes nodes) external;
+    function claimAllFee(address payable to) external;
+    function claimFee(address payable to, Playa amount) external;
+    function setFeeRate(uint16 feeRate) external;
     function stake(NodeId node) external payable;
     function retrieve(NodeId node, Playa value) external;
+    function getEarnedFeeAmount(NodeId node) external view returns (Playa amount);
     function getStakedAmount() external view returns (Playa amount);
     function getStakedAmountFor(address holder) external view returns (Playa amount);
     function getStakedNodes() external view returns (NodeId[] memory nodes);
