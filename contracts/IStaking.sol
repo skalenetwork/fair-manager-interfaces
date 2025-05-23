@@ -35,6 +35,7 @@ interface IStaking {
     function stake(NodeId node) external payable;
     function retrieve(NodeId node, Playa value) external;
     function getEarnedFeeAmount(NodeId node) external view returns (Playa amount);
+    function getNodeShare(NodeId node) external view returns (uint256 share);
     function getStakedAmount() external view returns (Playa amount);
     function getStakedAmountFor(address holder) external view returns (Playa amount);
     function getStakedNodes() external view returns (NodeId[] memory nodes);
