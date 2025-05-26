@@ -31,9 +31,9 @@ interface IStaking {
     function initialize(address initialAuthority, ICommittee committee, INodes nodes) external;
     function claimAllFee(address payable to) external;
     function claimFee(address payable to, Playa amount) external;
+    function retrieve(NodeId node, Playa value) external;
     function setFeeRate(uint16 feeRate) external;
     function stake(NodeId node) external payable;
-    function retrieve(NodeId node, Playa value) external;
     function getEarnedFeeAmount(NodeId node) external view returns (Playa amount);
     function getNodeShare(NodeId node) external view returns (uint256 share);
     function getStakedAmount() external view returns (Playa amount);
