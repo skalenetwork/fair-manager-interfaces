@@ -21,27 +21,27 @@
 
 pragma solidity ^0.8.24;
 
-type Playa is uint256;
+type Mirage is uint256;
 
 using {
-    _playaAdd as +,
-    _playaEqual as ==,
-    _playaGreater as >,
-    _playaSub as -
-} for Playa global;
+    _mirageAdd as +,
+    _mirageEqual as ==,
+    _mirageGreater as >,
+    _mirageSub as -
+} for Mirage global;
 
-function _playaAdd(Playa a, Playa b) pure returns (Playa sum) {
-    return Playa.wrap(Playa.unwrap(a) + Playa.unwrap(b));
+function _mirageAdd(Mirage a, Mirage b) pure returns (Mirage sum) {
+    return Mirage.wrap(Mirage.unwrap(a) + Mirage.unwrap(b));
 }
 
-function _playaEqual(Playa a, Playa b) pure returns (bool equal) {
-    return Playa.unwrap(a) == Playa.unwrap(b);
+function _mirageEqual(Mirage a, Mirage b) pure returns (bool equal) {
+    return Mirage.unwrap(a) == Mirage.unwrap(b);
 }
 
-function _playaGreater(Playa a, Playa b) pure returns (bool greater) {
-    return Playa.unwrap(a) > Playa.unwrap(b);
+function _mirageGreater(Mirage a, Mirage b) pure returns (bool greater) {
+    return Mirage.unwrap(a) > Mirage.unwrap(b);
 }
 
-function _playaSub(Playa a, Playa b) pure returns (Playa subtraction) {
-    return Playa.wrap(Playa.unwrap(a) - Playa.unwrap(b));
+function _mirageSub(Mirage a, Mirage b) pure returns (Mirage subtraction) {
+    return Mirage.wrap(Mirage.unwrap(a) - Mirage.unwrap(b));
 }
