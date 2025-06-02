@@ -30,6 +30,10 @@ using {
     _mirageSub as -
 } for Mirage global;
 
+// Slither flags as unused by interfaces but code is used
+// in mirage-manager implementation
+
+// slither-disable-start dead-code
 function _mirageAdd(Mirage a, Mirage b) pure returns (Mirage sum) {
     return Mirage.wrap(Mirage.unwrap(a) + Mirage.unwrap(b));
 }
@@ -45,3 +49,4 @@ function _mirageGreater(Mirage a, Mirage b) pure returns (bool greater) {
 function _mirageSub(Mirage a, Mirage b) pure returns (Mirage subtraction) {
     return Mirage.wrap(Mirage.unwrap(a) - Mirage.unwrap(b));
 }
+// slither-disable-end dead-code
