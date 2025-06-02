@@ -21,10 +21,25 @@
 
 pragma solidity ^0.8.24;
 
+import {ICommittee} from "./ICommittee.sol";
+import {INodes, NodeId} from "./INodes.sol";
+import {Mirage} from "./units.sol";
+
 
 interface IStaking {
-    function initialize(address initialAuthority) external;
-    function stake() external;
-    function retrieve(uint256 value) external;
-    function getStakedAmount() external view returns (uint256 amount);
+    receive() external payable;
+    function initialize(address initialAuthority, ICommittee committee, INodes nodes) external;
+    function claimAllFee(address payable to) external;
+    function claimFee(address payable to, Mirage amount) external;
+    function retrieve(NodeId node, Mirage value) external;
+    function setFeeRate(uint16 feeRate) external;
+    function stake(NodeId node) external payable;
+    function getEarnedFeeAmount(NodeId node) external view returns (Mirage amount);
+    function getNodeShare(NodeId node) external view returns (uint256 share);
+    function getStakedAmount() external view returns (Mirage amount);
+    function getStakedAmountFor(address holder) external view returns (Mirage amount);
+    function getStakedNodes() external view returns (NodeId[] memory nodes);
+    function getStakedNodesFor(address holder) external view returns (NodeId[] memory stakedNodes);
+    function getStakedToNodeAmount(NodeId node) external view returns (Mirage amount);
+    function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Mirage amount);
 }
