@@ -1,52 +1,52 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 /**
- *   units.sol - mirage-manager
+ *   units.sol - fair-manager
  *   Copyright (C) 2025-Present SKALE Labs
  *   @author Dmytro Stebaiev
  *
- *   mirage-manager is free software: you can redistribute it and/or modify
+ *   fair-manager is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
  *   by the Free Software Foundation, either version 3 of the License, or
  *   (at your option) any later version.
  *
- *   mirage-manager is distributed in the hope that it will be useful,
+ *   fair-manager is distributed in the hope that it will be useful,
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *   GNU Affero General Public License for more details.
  *
  *   You should have received a copy of the GNU Affero General Public License
- *   along with mirage-manager.  If not, see <https://www.gnu.org/licenses/>.
+ *   along with fair-manager.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 pragma solidity ^0.8.24;
 
-type Mirage is uint256;
+type Fair is uint256;
 
 using {
-    _mirageAdd as +,
-    _mirageEqual as ==,
-    _mirageGreater as >,
-    _mirageSub as -
-} for Mirage global;
+    _fairAdd as +,
+    _fairEqual as ==,
+    _fairGreater as >,
+    _fairSub as -
+} for Fair global;
 
 // Slither flags as unused by interfaces but code is used
-// in mirage-manager implementation
+// in fair-manager implementation
 
 // slither-disable-start dead-code
-function _mirageAdd(Mirage a, Mirage b) pure returns (Mirage sum) {
-    return Mirage.wrap(Mirage.unwrap(a) + Mirage.unwrap(b));
+function _fairAdd(Fair a, Fair b) pure returns (Fair sum) {
+    return Fair.wrap(Fair.unwrap(a) + Fair.unwrap(b));
 }
 
-function _mirageEqual(Mirage a, Mirage b) pure returns (bool equal) {
-    return Mirage.unwrap(a) == Mirage.unwrap(b);
+function _fairEqual(Fair a, Fair b) pure returns (bool equal) {
+    return Fair.unwrap(a) == Fair.unwrap(b);
 }
 
-function _mirageGreater(Mirage a, Mirage b) pure returns (bool greater) {
-    return Mirage.unwrap(a) > Mirage.unwrap(b);
+function _fairGreater(Fair a, Fair b) pure returns (bool greater) {
+    return Fair.unwrap(a) > Fair.unwrap(b);
 }
 
-function _mirageSub(Mirage a, Mirage b) pure returns (Mirage subtraction) {
-    return Mirage.wrap(Mirage.unwrap(a) - Mirage.unwrap(b));
+function _fairSub(Fair a, Fair b) pure returns (Fair subtraction) {
+    return Fair.wrap(Fair.unwrap(a) - Fair.unwrap(b));
 }
 // slither-disable-end dead-code

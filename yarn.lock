@@ -1243,9 +1243,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skalenetwork/professional-interfaces@workspace:.":
+"@skalenetwork/fair-interfaces@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@skalenetwork/professional-interfaces@workspace:."
+  resolution: "@skalenetwork/fair-interfaces@workspace:."
   dependencies:
     "@types/node": "npm:>=18.0.0"
     cspell: "npm:^8.17.5"
