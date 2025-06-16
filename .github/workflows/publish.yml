@@ -73,8 +73,8 @@ jobs:
     - name: Remove feature tag
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # TODO: rename @skalenetwork/professional-interfaces with @skalenetwork/mirage-manager-interfaces
+      # TODO: rename @skalenetwork/fair-interfaces with @skalenetwork/fair-manager-interfaces
       run: |
         export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
         echo "Source branch: $SOURCE_BRANCH"
-        npm --//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN dist-tag rm @skalenetwork/professional-interfaces $SOURCE_BRANCH
+        npm --//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN dist-tag rm @skalenetwork/fair-interfaces $SOURCE_BRANCH
