@@ -31,6 +31,8 @@ interface IStaking {
     function initialize(address initialAuthority, ICommittee committee, INodes nodes) external;
     function claimAllFee(address payable to) external;
     function claimFee(address payable to, Mirage amount) external;
+    function disable(NodeId node) external;
+    function enable(NodeId node) external;
     function retrieve(NodeId node, Mirage value) external;
     function setFeeRate(uint16 feeRate) external;
     function stake(NodeId node) external payable;
