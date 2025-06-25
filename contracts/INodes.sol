@@ -63,9 +63,9 @@ interface INodes {
     function confirmOwnerChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
-    function getPassiveNodesIds() external view returns (NodeId[] memory nodeIds);
-    function getActiveNodesIds() external view returns (NodeId[] memory nodeIds);
-    function getPassiveNodesIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
+    function getPassiveNodeIds() external view returns (NodeId[] memory nodeIds);
+    function getActiveNodeIds() external view returns (NodeId[] memory nodeIds);
+    function getPassiveNodeIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
 
 }
