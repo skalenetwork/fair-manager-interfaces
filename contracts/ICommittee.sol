@@ -59,6 +59,8 @@ interface ICommittee {
     function processSuccessfulDkg(DkgId dkg) external;
     function select() external;
     function setCommitteeSize(uint256 size) external;
+    function setRNG(address newRNG) external;
+    function disableRNG() external;
     function setStaking(IStaking stakingAddress) external;
     function setDkg(IDkg dkgAddress) external;
     function setNodes(INodes nodesAddress) external;
