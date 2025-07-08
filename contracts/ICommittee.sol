@@ -44,7 +44,12 @@ interface ICommittee {
 
     event VersionUpdated(string version, string newVersion);
 
-    function initialize(address initialAuthority, INodes nodesAddress, IDkg.G2Point memory commonPublicKey) external;
+    function initialize(
+        address initialAuthority,
+        INodes nodesAddress,
+        IDkg.G2Point memory commonPublicKey,
+        NodeId[] memory nodeIds
+    ) external;
     function ejectUnhealthyNode() external;
     function nodeBlacklisted(NodeId node) external;
     function nodeCreated(NodeId node) external;
