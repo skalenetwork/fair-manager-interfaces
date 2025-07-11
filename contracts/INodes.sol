@@ -57,6 +57,8 @@ interface INodes {
         bytes calldata ip,
         uint16 port
     ) external;
+    function deleteNode() external;
+    function deleteNodeByFoundation(NodeId id) external;
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
     function requestChangeOwner(NodeId nodeId, address newOwner) external;
