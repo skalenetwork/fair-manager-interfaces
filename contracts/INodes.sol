@@ -22,6 +22,7 @@
 pragma solidity ^0.8.24;
 
 import { ICommittee } from "./ICommittee.sol";
+import { IStatus } from "./IStatus.sol";
 
 type NodeId is uint256;
 
@@ -48,6 +49,7 @@ interface INodes {
 
     function initialize(address initialAuthority, Node[] calldata initialNodes) external;
     function setCommittee(ICommittee committeeAddress) external;
+    function setStatus(IStatus statusAddress) external;
     function registerNode(
         bytes calldata ip,
         bytes32[2] calldata publicKey,
