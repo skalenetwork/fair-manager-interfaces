@@ -68,6 +68,8 @@ interface ICommittee {
     function setTransitionDelay(Duration delay) external;
     function setVersion(string calldata newVersion) external;
     function updateWeight(NodeId node, uint256 share) external;
+    function status() external view returns(IStatus status);
+    function staking() external view returns(IStaking staking);
     function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
