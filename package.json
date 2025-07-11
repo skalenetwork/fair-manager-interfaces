@@ -1,5 +1,5 @@
 {
-  "name": "@skalenetwork/fair-interfaces",
+  "name": "@skalenetwork/fair-manager-interfaces",
   "version": "0.1.0",
   "packageManager": "yarn@4.6.0",
   "devDependencies": {
