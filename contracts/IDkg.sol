@@ -28,7 +28,8 @@ import {INodes, NodeId} from "./INodes.sol";
 type DkgId is uint256;
 
 using {
-    _dkgIdEquals as ==
+    _dkgIdEquals as ==,
+    _dkgIdNotEquals as !=
 } for DkgId global;
 
 interface IDkg {
@@ -47,6 +48,25 @@ interface IDkg {
         bytes32 share;
     }
 
+    enum Status {
+        SUCCESS,
+        BROADCAST,
+        ALRIGHT,
+        FAILED
+    }
+
+    struct Round {
+        DkgId id;
+        Status status;
+        NodeId[] nodes;
+        G2Point publicKey;
+        uint256 startingBlockNumber;
+        uint256 numberOfBroadcasted;
+        bytes32[] hashedData;
+        uint256 numberOfCompleted;
+        bool[] completed;
+    }
+
     function initialize(address initialAuthority, ICommittee committeeAddress, INodes nodesAddress) external;
     function alright(DkgId dkg) external;
     function broadcast(
@@ -57,6 +77,7 @@ interface IDkg {
     function generate(NodeId[] calldata nodes) external returns (DkgId dkgId);
     function getParticipants(DkgId dkg) external view returns (NodeId[] memory participants);
     function getPublicKey(DkgId dkg) external view returns (G2Point memory publicKey);
+    function getRound(DkgId dkg) external view returns (Round memory round);
     function isNodeBroadcasted(DkgId dkg, NodeId node) external view returns (bool broadcasted);
 }
 
@@ -66,5 +87,9 @@ interface IDkg {
 // slither-disable-start dead-code
 function _dkgIdEquals(DkgId a, DkgId b) pure returns (bool result) {
     return DkgId.unwrap(a) == DkgId.unwrap(b);
+}
+
+function _dkgIdNotEquals(DkgId a, DkgId b) pure returns (bool result) {
+    return DkgId.unwrap(a) != DkgId.unwrap(b);
 }
 // slither-disable-end dead-code
