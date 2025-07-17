@@ -41,6 +41,7 @@ interface INodes {
         uint16 port;
     }
 
+    event NodeDeleted(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
     event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
     event NodeOwnerChanged(NodeId indexed nodeId, address indexed oldOwner, address indexed newOwner);
     event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
