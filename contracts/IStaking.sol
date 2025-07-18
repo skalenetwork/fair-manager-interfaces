@@ -23,12 +23,18 @@ pragma solidity ^0.8.24;
 
 import {ICommittee} from "./ICommittee.sol";
 import {INodes, NodeId} from "./INodes.sol";
+import {IRewardWallet} from "./IRewardWallet.sol";
 import {Fair} from "./units.sol";
 
 
 interface IStaking {
     receive() external payable;
-    function initialize(address initialAuthority, ICommittee committee, INodes nodes) external;
+    function initialize(
+        address initialAuthority,
+        ICommittee committee,
+        INodes nodes,
+        IRewardWallet rewardWalletReference
+    ) external;
     function claimAllFee(address payable to) external;
     function claimFee(address payable to, Fair amount) external;
     function disable(NodeId node) external;
