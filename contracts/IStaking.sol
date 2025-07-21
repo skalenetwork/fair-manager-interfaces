@@ -45,4 +45,5 @@ interface IStaking {
     function getStakedToNodeAmount(NodeId node) external view returns (Fair amount);
     function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Fair amount);
     function isNodeEnabled(NodeId node) external view returns (bool enabled);
+    function getNodeTotalStake(NodeId node) external view returns (Fair amount);
 }
