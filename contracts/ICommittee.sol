@@ -71,6 +71,7 @@ interface ICommittee {
     function isNodeInCurrentOrNextCommittee(NodeId node) external view returns (bool result);
     function getActiveCommitteeIndex() external view returns (CommitteeIndex committeeIndex);
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
+    function staking() external view returns (IStaking stakingAddress);
 }
 
 // Slither flags as unused by interfaces but code is used
