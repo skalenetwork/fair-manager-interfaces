@@ -41,6 +41,8 @@ interface INodes {
         uint16 port;
     }
 
+    event ActiveNodeDeleted(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
+    event PassiveNodeDeleted(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
     event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
     event NodeOwnerChanged(NodeId indexed nodeId, address indexed oldOwner, address indexed newOwner);
     event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
@@ -57,6 +59,8 @@ interface INodes {
         bytes calldata ip,
         uint16 port
     ) external;
+    function deleteNode(NodeId id) external;
+    function deleteNodeByFoundation(NodeId id) external;
     function setIpAddress(NodeId nodeId, bytes calldata ip, uint16 port) external;
     function setDomainName(NodeId nodeId, string calldata name) external;
     function requestChangeOwner(NodeId nodeId, address newOwner) external;

@@ -35,6 +35,7 @@ interface IStatus {
     function alive() external;
     function setHeartbeatInterval(Duration interval) external;
     function whitelistNode(NodeId nodeId) external;
+    function nodeRemoved(NodeId node) external;
     function removeNodeFromWhitelist(NodeId nodeId) external;
     function isHealthy(NodeId nodeId) external view returns (bool healthy);
     function getNodesEligibleForCommittee() external view returns (NodeId[] memory nodeIds);
