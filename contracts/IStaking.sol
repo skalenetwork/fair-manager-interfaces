@@ -47,6 +47,7 @@ interface IStaking {
     function stake(NodeId node) external payable;
     function getEarnedFeeAmount(NodeId node) external view returns (Fair amount);
     function getNodeShare(NodeId node) external view returns (uint256 share);
+    function getRewardWallet(NodeId node) external view returns (IRewardWallet rewardWallet);
     function getStakedAmount() external view returns (Fair amount);
     function getStakedAmountFor(address holder) external view returns (Fair amount);
     function getStakedNodes() external view returns (NodeId[] memory nodes);
