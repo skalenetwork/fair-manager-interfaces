@@ -43,6 +43,7 @@ interface IStaking {
     function payReward(NodeId node) external payable;
     function retrieve(NodeId node, Fair value) external;
     function setFeeRate(uint16 feeRate) external;
+    function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
     function setStakeLimit(Fair limit) external;
     function stake(NodeId node) external payable;
     function getEarnedFeeAmount(NodeId node) external view returns (Fair amount);
