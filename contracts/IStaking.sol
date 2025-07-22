@@ -39,6 +39,7 @@ interface IStaking {
     function claimFee(address payable to, Fair amount) external;
     function disable(NodeId node) external;
     function enable(NodeId node) external;
+    function nodeCreated(NodeId node) external;
     function payReward(NodeId node) external payable;
     function retrieve(NodeId node, Fair value) external;
     function setFeeRate(uint16 feeRate) external;
