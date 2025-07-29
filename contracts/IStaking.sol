@@ -33,7 +33,8 @@ interface IStaking {
         address initialAuthority,
         ICommittee committee,
         INodes nodes,
-        IRewardWallet rewardWalletReference
+        IRewardWallet rewardWalletReference,
+        NodeId[] memory nodeIds
     ) external;
     function claimAllFee(address payable to) external;
     function claimFee(address payable to, Fair amount) external;
