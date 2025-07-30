@@ -34,6 +34,7 @@ interface IStaking {
     function disable(NodeId node) external;
     function enable(NodeId node) external;
     function setNodeStakeLimit(NodeId node, Fair limit) external;
+    function removeNodeStakeLimit(NodeId node) external;
     function retrieve(NodeId node, Fair value) external;
     function setFeeRate(uint16 feeRate) external;
     function stake(NodeId node) external payable;
