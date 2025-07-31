@@ -33,8 +33,7 @@ interface IStaking {
     function claimFee(address payable to, Fair amount) external;
     function disable(NodeId node) external;
     function enable(NodeId node) external;
-    function setStakeLimit(NodeId node, Fair limit) external;
-    function removeStakeLimit(NodeId node) external;
+    function setStakeLimit(Fair limit) external;
     function retrieve(NodeId node, Fair value) external;
     function setFeeRate(uint16 feeRate) external;
     function stake(NodeId node) external payable;
@@ -48,5 +47,4 @@ interface IStaking {
     function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Fair amount);
     function isNodeEnabled(NodeId node) external view returns (bool enabled);
     function getNodeTotalStake(NodeId node) external view returns (Fair amount);
-    function getStakeLimit(NodeId node) external view returns (Fair limit);
 }
