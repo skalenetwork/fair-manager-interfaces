@@ -63,7 +63,7 @@ interface ICommittee {
     function disableRNG() external;
     function setStaking(IStaking stakingAddress) external;
     function setDkg(IDkg dkgAddress) external;
-    function setHardMinTransitionDelay(Duration delay) external;
+    function setMinTransitionDelay(Duration delay) external;
     function setNodes(INodes nodesAddress) external;
     function setStatus(IStatus statusAddress) external;
     function setTransitionDelay(Duration delay) external;
