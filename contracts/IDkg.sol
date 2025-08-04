@@ -59,6 +59,19 @@ interface IDkg {
         DkgId id;
         Status status;
         NodeId[] nodes;
+        mapping(NodeId => uint256 index) nodeIndex;
+        G2Point publicKey;
+        uint256 startingBlockNumber;
+        uint256 numberOfBroadcasted;
+        bytes32[] hashedData;
+        uint256 numberOfCompleted;
+        bool[] completed;
+    }
+
+    struct RoundInfo {
+        DkgId id;
+        Status status;
+        NodeId[] nodes;
         G2Point publicKey;
         uint256 startingBlockNumber;
         uint256 numberOfBroadcasted;
@@ -77,7 +90,7 @@ interface IDkg {
     function generate(NodeId[] calldata nodes) external returns (DkgId dkgId);
     function getParticipants(DkgId dkg) external view returns (NodeId[] memory participants);
     function getPublicKey(DkgId dkg) external view returns (G2Point memory publicKey);
-    function getRound(DkgId dkg) external view returns (Round memory round);
+    function getRound(DkgId dkg) external view returns (RoundInfo memory round);
     function isNodeBroadcasted(DkgId dkg, NodeId node) external view returns (bool broadcasted);
 }
 
