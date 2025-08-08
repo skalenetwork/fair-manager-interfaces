@@ -46,6 +46,8 @@ interface IStaking {
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
     function setStakeLimit(Fair limit) external;
     function stake(NodeId node) external payable;
+    function getDelegatorsToNode(NodeId node) external view returns (address[] memory delegators);
+    function getDelegatorsToNodeCount(NodeId node) external view returns (uint256 count);
     function getEarnedFeeAmount(NodeId node) external view returns (Fair amount);
     function getNodeShare(NodeId node) external view returns (uint256 share);
     function getRewardWallet(NodeId node) external view returns (IRewardWallet rewardWallet);
