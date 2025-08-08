@@ -43,11 +43,16 @@ interface INodes {
     event ActiveNodeDeleted(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
     event PassiveNodeDeleted(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
     event NodeRegistered(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
+    event NodeOwnerChangeRequested(NodeId indexed nodeId, address indexed oldOwner, address indexed newOwner);
     event NodeOwnerChanged(NodeId indexed nodeId, address indexed oldOwner, address indexed newOwner);
     event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
     event NodeIpChanged(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
 
-    function initialize(address initialAuthority, Node[] calldata initialNodes) external;
+    function initialize(
+        address initialAuthority,
+        Node[] calldata initialNodes,
+        bytes32[][2] calldata nodesPublicKeys
+    ) external;
     function setCommittee(ICommittee committeeAddress) external;
     function registerNode(
         bytes calldata ip,
