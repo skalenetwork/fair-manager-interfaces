@@ -34,7 +34,6 @@ interface INodes {
 
     struct Node {
         NodeId id;
-        bytes32[2] publicKey;
         bytes ip;
         string domainName;
         address nodeAddress;
@@ -68,6 +67,7 @@ interface INodes {
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
     function getPassiveNodeIds() external view returns (NodeId[] memory nodeIds);
+    function getPublicKeyForNodeId(NodeId nodeId) external view returns (bytes32[2] memory publicKey);
     function getActiveNodeIds() external view returns (NodeId[] memory nodeIds);
     function getPassiveNodeIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
