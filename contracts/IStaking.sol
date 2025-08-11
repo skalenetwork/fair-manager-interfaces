@@ -35,12 +35,14 @@ interface IStaking {
         INodes nodes,
         IRewardWallet rewardWalletReference
     ) external;
-    function claimAllFee(address payable to) external;
-    function claimFee(address payable to, Fair amount) external;
+    function addAllowedReceiver(address receiver) external;
+    function claimAllFee(NodeId node) external;
+    function claimFee(NodeId node, Fair amount) external;
     function disable(NodeId node) external;
     function enable(NodeId node) external;
     function nodeCreated(NodeId node) external;
     function payReward(NodeId node) external payable;
+    function removeAllowedReceiver(address receiver) external;
     function retrieve(NodeId node, Fair value) external;
     function setFeeRate(uint16 feeRate) external;
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
