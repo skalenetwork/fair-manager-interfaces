@@ -71,6 +71,7 @@ interface INodes {
     function confirmOwnerChange(NodeId nodeId) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
+    function getNodeIdUnchecked(address nodeAddress) external view returns (NodeId nodeId);
     function getPassiveNodeIds() external view returns (NodeId[] memory nodeIds);
     function getPublicKey(NodeId nodeId) external view returns (bytes32[2] memory publicKey);
     function getActiveNodeIds() external view returns (NodeId[] memory nodeIds);
