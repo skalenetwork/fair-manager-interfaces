@@ -44,8 +44,8 @@ interface IStaking {
     function payReward(NodeId node) external payable;
     function removeAllowedReceiver(address receiver) external;
     function retrieve(NodeId node, Fair value) external;
-    function sendAllEarnedFees(address payable to) external;
-    function sendEarnedFees(address payable to, Fair amount) external;
+    function sendAllFees(address payable to) external;
+    function sendFees(address payable to, Fair amount) external;
     function setFeeRate(uint16 feeRate) external;
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
     function setStakeLimit(Fair limit) external;
