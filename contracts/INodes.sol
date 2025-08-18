@@ -76,7 +76,7 @@ interface INodes {
     function getActiveNodeIds() external view returns (NodeId[] memory nodeIds);
     function getPassiveNodeIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
-
+    function passiveNodeExists(NodeId nodeId) external view returns (bool result);
 }
 
 // Slither flags as unused by interfaces but code is used
