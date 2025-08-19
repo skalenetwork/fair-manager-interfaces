@@ -42,7 +42,7 @@ interface IStaking {
     function nodeCreated(NodeId node) external;
     function payReward(NodeId node) external payable;
     function retrieve(NodeId node, Fair value) external;
-    function retrieveAll() external;
+    function retrieveAll(uint256 startIndex, uint256 nNodes) external;
     function retrieveAllFromNode(NodeId node) external;
     function setFeeRate(uint16 feeRate) external;
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
