@@ -45,6 +45,7 @@ interface IStaking {
     function payReward(NodeId node) external payable;
     function removeAllowedReceiver(address receiver) external;
     function retrieve(NodeId node, Fair value) external;
+    function retrieveAll(NodeId node) external;
     function sendAllFees(address payable to) external;
     function sendFees(address payable to, Fair amount) external;
     function setFeeRate(uint16 feeRate) external;
