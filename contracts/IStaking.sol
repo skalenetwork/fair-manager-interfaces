@@ -41,6 +41,7 @@ interface IStaking {
     function disable(NodeId node) external;
     function enable(NodeId node) external;
     function nodeCreated(NodeId node) external;
+    function nodeRemoved(NodeId node) external;
     function payReward(NodeId node) external payable;
     function removeAllowedReceiver(address receiver) external;
     function retrieve(NodeId node, Fair value) external;
