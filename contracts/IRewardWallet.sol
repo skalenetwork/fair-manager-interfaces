@@ -21,12 +21,17 @@
 
 pragma solidity ^0.8.24;
 
-import {NodeId} from "./INodes.sol";
+import {INodes, NodeId} from "./INodes.sol";
 import {IStaking} from "./IStaking.sol";
 
 
 interface IRewardWallet {
     receive() external payable;
-    function initialize(address initialAuthority, IStaking staking_, NodeId ownerNode_) external;
+    function initialize(
+        address initialAuthority,
+        IStaking staking_,
+        INodes nodes_,
+        NodeId ownerNode_
+    ) external;
     function flush() external;
 }
