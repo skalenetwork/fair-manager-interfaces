@@ -103,4 +103,5 @@ interface IStaking {
     ) external view returns (ExitRequest memory request);
     function isNodeEnabled(NodeId node) external view returns (bool enabled);
     function isRequestUnlocked(uint256 requestId) external view returns (bool unlocked);
+    function stakeLimit() external view returns (Fair amount);
 }
