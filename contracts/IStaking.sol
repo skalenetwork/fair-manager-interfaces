@@ -65,4 +65,5 @@ interface IStaking {
     function getStakedNodesFor(address holder) external view returns (NodeId[] memory stakedNodes);
     function getStakedToNodeAmount(NodeId node) external view returns (Fair amount);
     function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Fair amount);
+    function stakeLimit() external view returns (Fair amount);
 }
