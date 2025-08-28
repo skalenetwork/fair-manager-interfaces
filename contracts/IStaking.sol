@@ -43,11 +43,14 @@ interface IStaking {
     function nodeCreated(NodeId node) external;
     function nodeRemoved(NodeId node) external;
     function payReward(NodeId node) external payable;
+    function pullUnlockedTokens() external;
     function removeAllowedReceiver(address receiver) external;
     function retrieve(NodeId node, Fair value) external;
     function sendAllFees(address payable to) external;
     function sendFees(address payable to, Fair amount) external;
+    function setMaxAllowedExitRequests(uint256 amount) external;
     function setFeeRate(uint16 feeRate) external;
+    function setRetrievingDelay(uint256 delay) external;
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
     function setStakeLimit(Fair limit) external;
     function stake(NodeId node) external payable;
@@ -58,6 +61,8 @@ interface IStaking {
     function getNodeFeeRate(NodeId node) external view returns (uint16 feeRate);
     function getNodeShare(NodeId node) external view returns (uint256 share);
     function getNodeTotalStake(NodeId node) external view returns (Fair amount);
+    function getMyLockedTokensAmount() external view returns(Fair amount);
+    function getMyUnlockedTokensAmount() external view returns(Fair amount);
     function getRewardWallet(NodeId node) external view returns (IRewardWallet rewardWallet);
     function getStakedAmount() external view returns (Fair amount);
     function getStakedAmountFor(address holder) external view returns (Fair amount);
@@ -65,4 +70,5 @@ interface IStaking {
     function getStakedNodesFor(address holder) external view returns (NodeId[] memory stakedNodes);
     function getStakedToNodeAmount(NodeId node) external view returns (Fair amount);
     function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Fair amount);
+    function getTotalFairLeaving() external view returns (Fair amount);
 }
