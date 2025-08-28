@@ -25,14 +25,10 @@ import {DkgId, IDkg} from "./IDkg.sol";
 import {INodes, NodeId} from "./INodes.sol";
 import {IStaking} from "./IStaking.sol";
 import {Duration, IStatus} from "./IStatus.sol";
-
+import {Timestamp} from "./units.sol";
 
 type CommitteeIndex is uint256;
-type Timestamp is uint256;
 
-using {
-    _timestampLess as <
-} for Timestamp global;
 
 interface ICommittee {
     struct Committee {
@@ -75,12 +71,3 @@ interface ICommittee {
     function getCommittee(CommitteeIndex committeeIndex) external view returns (Committee memory committee);
     function staking() external view returns (IStaking stakingAddress);
 }
-
-// Slither flags as unused by interfaces but code is used
-// in fair-manager implementation to overload < operant
-
-// slither-disable-start dead-code
-function _timestampLess(Timestamp a, Timestamp b) pure returns (bool less) {
-    return Timestamp.unwrap(a) < Timestamp.unwrap(b);
-}
-// slither-disable-end dead-code
