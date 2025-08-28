@@ -22,6 +22,7 @@
 pragma solidity ^0.8.24;
 
 type Fair is uint256;
+type Timestamp is uint256;
 
 using {
     _fairAdd as +,
@@ -29,6 +30,11 @@ using {
     _fairGreater as >,
     _fairSub as -
 } for Fair global;
+
+using {
+    _timestampLess as <,
+    _timestampAdd as +
+} for Timestamp global;
 
 // Slither flags as unused by interfaces but code is used
 // in fair-manager implementation
@@ -48,5 +54,13 @@ function _fairGreater(Fair a, Fair b) pure returns (bool greater) {
 
 function _fairSub(Fair a, Fair b) pure returns (Fair subtraction) {
     return Fair.wrap(Fair.unwrap(a) - Fair.unwrap(b));
+}
+
+function _timestampAdd(Timestamp a, Timestamp b) pure returns (Timestamp sum) {
+    return Timestamp.wrap(Timestamp.unwrap(a) + Timestamp.unwrap(b));
+}
+
+function _timestampLess(Timestamp a, Timestamp b) pure returns (bool less) {
+    return Timestamp.unwrap(a) < Timestamp.unwrap(b);
 }
 // slither-disable-end dead-code

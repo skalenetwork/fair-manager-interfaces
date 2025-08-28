@@ -24,45 +24,79 @@ pragma solidity ^0.8.24;
 import {ICommittee} from "./ICommittee.sol";
 import {INodes, NodeId} from "./INodes.sol";
 import {IRewardWallet} from "./IRewardWallet.sol";
-import {Fair} from "./units.sol";
-
+import {Fair, Timestamp} from "./units.sol";
 
 interface IStaking {
+
+    struct ExitRequest {
+        address user;
+        NodeId nodeId;
+        Fair amount;
+        Timestamp unlockDate;
+    }
+
+    // =============================================================
+    //                           RECEIVE
+    // =============================================================
+
     receive() external payable;
+
+    // =============================================================
+    //                       WRITE FUNCTIONS
+    // =============================================================
+
     function initialize(
         address initialAuthority,
         ICommittee committee,
         INodes nodes,
         IRewardWallet rewardWalletReference
     ) external;
+
     function addAllowedReceiver(address receiver) external;
-    function claimAllFees(NodeId node) external;
-    function claimFees(NodeId node, Fair amount) external;
+    function claimRequest(uint256 requestId) external;
     function disable(NodeId node) external;
     function enable(NodeId node) external;
     function nodeCreated(NodeId node) external;
     function nodeRemoved(NodeId node) external;
     function payReward(NodeId node) external payable;
     function removeAllowedReceiver(address receiver) external;
-    function retrieve(NodeId node, Fair value) external;
-    function sendAllFees(address payable to) external;
-    function sendFees(address payable to, Fair amount) external;
+    function requestAllFees(NodeId node) external;
+    function requestFees(NodeId node, Fair amount) external;
+    function requestRetrieve(NodeId node, Fair value) external;
+    function requestSendAllFees(address payable to) external;
+    function requestSendFees(address payable to, Fair amount) external;
     function setFeeRate(uint16 feeRate) external;
+    function setRetrievingDelay(Timestamp delay) external;
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
     function setStakeLimit(Fair limit) external;
     function stake(NodeId node) external payable;
-    function isNodeEnabled(NodeId node) external view returns (bool enabled);
+
+    // =============================================================
+    //                       READ FUNCTIONS
+    // =============================================================
+
     function getDelegatorsToNode(NodeId node) external view returns (address[] memory delegators);
     function getDelegatorsToNodeCount(NodeId node) external view returns (uint256 count);
     function getEarnedFeeAmount(NodeId node) external view returns (Fair amount);
+    function getExitRequest(uint256 requestId) external view returns (ExitRequest memory request);
+    function getExitRequestAt(address user, uint256 index) external view returns (ExitRequest memory request);
+    function getExitRequestsCountFor(address user) external view returns (uint256 count);
+    function getMyExitRequestsCount() external view returns (uint256 count);
+    function getMyTotalInExitQueue() external view returns (Fair amount);
     function getNodeFeeRate(NodeId node) external view returns (uint16 feeRate);
     function getNodeShare(NodeId node) external view returns (uint256 share);
     function getNodeTotalStake(NodeId node) external view returns (Fair amount);
+    function getRetrievingDelay() external view returns (Timestamp delay);
     function getRewardWallet(NodeId node) external view returns (IRewardWallet rewardWallet);
     function getStakedAmount() external view returns (Fair amount);
     function getStakedAmountFor(address holder) external view returns (Fair amount);
-    function getStakedNodes() external view returns (NodeId[] memory nodes);
+    function getStakedNodes() external view returns (NodeId[] memory stakedNodes);
     function getStakedNodesFor(address holder) external view returns (NodeId[] memory stakedNodes);
     function getStakedToNodeAmount(NodeId node) external view returns (Fair amount);
     function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Fair amount);
+    function getTotalInExitQueueFor(address user) external view returns (Fair amount);
+    function getTotalInExitQueue() external view returns (Fair amount);
+    function getUnlockedExitRequestFor(address user) external view returns (uint256 requestId, ExitRequest memory request);
+    function isNodeEnabled(NodeId node) external view returns (bool enabled);
+    function isRequestUnlocked(uint256 requestId) external view returns (bool unlocked);
 }
