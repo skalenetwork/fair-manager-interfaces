@@ -58,10 +58,10 @@ interface IStaking {
     function requestClaimAllFees(NodeId node) external;
     function requestClaimFees(NodeId node, Fair amount) external;
     function requestRetrieve(NodeId node, Fair value) external;
+    function requestSendAllFees(address payable to) external;
     function requestSendFees(address payable to, Fair amount) external;
     function retrieve(bytes32 requestId) external;
     function retrieveAll() external;
-    function sendAllFees(address payable to) external;
     function setFeeRate(uint16 feeRate) external;
     function setMaxAllowedExitRequests(uint256 amount) external;
     function setRetrievingDelay(uint256 delay) external;
