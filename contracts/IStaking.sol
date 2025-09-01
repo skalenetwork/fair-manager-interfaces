@@ -47,15 +47,15 @@ interface IStaking {
     ) external;
 
     function addAllowedReceiver(address receiver) external;
-    function claimFees() external;
+    function claimUnlockedFees() external;
     function disable(NodeId node) external;
     function enable(NodeId node) external;
     function nodeCreated(NodeId node) external;
     function nodeRemoved(NodeId node) external;
     function payReward(NodeId node) external payable;
     function removeAllowedReceiver(address receiver) external;
-    function requestClaimAllFees(NodeId node) external;
-    function requestClaimFees(NodeId node, Fair amount) external;
+    function requestAllFees(NodeId node) external;
+    function requestFees(NodeId node, Fair amount) external;
     function requestRetrieve(NodeId node, Fair value) external;
     function requestSendAllFees(address payable to) external;
     function requestSendFees(address payable to, Fair amount) external;

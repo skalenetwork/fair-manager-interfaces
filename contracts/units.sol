@@ -32,7 +32,7 @@ using {
 } for Fair global;
 
 using {
-    _timestampLess as <
+    _timestampLess as <,
     _timestampAdd as +
 } for Timestamp global;
 

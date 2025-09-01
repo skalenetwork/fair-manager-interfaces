@@ -25,7 +25,7 @@ import {DkgId, IDkg} from "./IDkg.sol";
 import {INodes, NodeId} from "./INodes.sol";
 import {IStaking} from "./IStaking.sol";
 import {Duration, IStatus} from "./IStatus.sol";
-
+import {Timestamp} from "./units.sol";
 
 type CommitteeIndex is uint256;
 
