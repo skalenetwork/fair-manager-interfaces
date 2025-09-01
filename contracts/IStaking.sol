@@ -24,7 +24,7 @@ pragma solidity ^0.8.24;
 import {ICommittee} from "./ICommittee.sol";
 import {INodes, NodeId} from "./INodes.sol";
 import {IRewardWallet} from "./IRewardWallet.sol";
-import {Fair} from "./units.sol";
+import {Fair, Timestamp} from "./units.sol";
 
 
 interface IStaking {
@@ -62,7 +62,7 @@ interface IStaking {
     function retrieveStake() external;
     function setFeeRate(uint16 feeRate) external;
     function setMaxAllowedExitRequests(uint256 amount) external;
-    function setRetrievingDelay(uint256 delay) external;
+    function setRetrievingDelay(Timestamp delay) external;
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
     function setStakeLimit(Fair limit) external;
     function stake(NodeId node) external payable;
