@@ -52,7 +52,6 @@ interface ICommittee {
     ) external;
     function ejectUnhealthyNode() external;
     function nodeBlacklisted(NodeId node) external;
-    function nodeCreated(NodeId node) external;
     function nodeRemoved(NodeId node) external;
     function nodeWhitelisted(NodeId node) external;
     function processHeartbeat(NodeId node) external;
