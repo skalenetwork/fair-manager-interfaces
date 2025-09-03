@@ -61,11 +61,11 @@ interface IStaking {
     function nodeRemoved(NodeId node) external;
     function payReward(NodeId node) external payable;
     function removeAllowedReceiver(address receiver) external;
-    function requestAllFees(NodeId node) external;
-    function requestFees(NodeId node, Fair amount) external;
-    function requestRetrieve(NodeId node, Fair value) external;
-    function requestSendAllFees(address payable to) external;
-    function requestSendFees(address payable to, Fair amount) external;
+    function requestAllFees(NodeId node) external returns (uint256 requestId);
+    function requestFees(NodeId node, Fair amount) external returns (uint256 requestId);
+    function requestRetrieve(NodeId node, Fair value) external returns (uint256 requestId);
+    function requestSendAllFees(address payable to) external returns (uint256 requestId);
+    function requestSendFees(address payable to, Fair amount) external returns (uint256 requestId);
     function setFeeRate(uint16 feeRate) external;
     function setRetrievingDelay(Timestamp delay) external;
     function setRewardWalletReference(IRewardWallet rewardWalletReference_) external;
