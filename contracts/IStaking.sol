@@ -97,7 +97,7 @@ interface IStaking {
     function getStakedToNodeAmountFor(NodeId node, address holder) external view returns (Fair amount);
     function getTotalInExitQueueFor(address user) external view returns (Fair amount);
     function getTotalInExitQueue() external view returns (Fair amount);
-    function getUnlockedExitRequestFor(address user) external view returns (ExitRequest memory request);
+    function getUnlockedExitRequestFor(address user, uint256 fromIndex) external view returns (ExitRequest memory request);
     function isNodeEnabled(NodeId node) external view returns (bool enabled);
     function isRequestUnlocked(uint256 requestId) external view returns (bool unlocked);
 }
