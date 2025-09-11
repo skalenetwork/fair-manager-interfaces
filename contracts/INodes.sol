@@ -69,7 +69,6 @@ interface INodes {
     function setDomainName(NodeId nodeId, string calldata name) external;
     function requestChangeOwner(NodeId nodeId, address newOwner) external;
     function confirmOwnerChange(NodeId nodeId) external;
-    function setSelfStakeRequirement(Fair amount) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
     function getPassiveNodeIds() external view returns (NodeId[] memory nodeIds);
