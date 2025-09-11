@@ -71,6 +71,7 @@ interface INodes {
     function setDomainName(NodeId nodeId, string calldata name) external;
     function requestChangeOwner(NodeId nodeId, address newOwner) external;
     function confirmOwnerChange(NodeId nodeId) external;
+    function setSelfStakeRequirement(Fair amount) external;
     function getNode(NodeId nodeId) external view returns (Node memory node);
     function getNodeId(address nodeAddress) external view returns (NodeId nodeId);
     function getPassiveNodeIds() external view returns (NodeId[] memory nodeIds);
@@ -79,7 +80,6 @@ interface INodes {
     function getPassiveNodeIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
     function passiveNodeExists(NodeId nodeId) external view returns (bool result);
-    function setSelfStakeRequirement(Fair amount) external;
 }
 
 // Slither flags as unused by interfaces but code is used
