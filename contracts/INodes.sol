@@ -22,7 +22,7 @@
 pragma solidity ^0.8.24;
 
 import { ICommittee } from "./ICommittee.sol";
-import { Fair } from "./units.sol";
+
 type NodeId is uint256;
 
 using {
