@@ -57,9 +57,9 @@ interface IStaking {
     function claimRequest(uint256 requestId) external;
     function disable(NodeId node) external;
     function enable(NodeId node) external;
-    function nodeCreated(NodeId node) external;
     function nodeRemoved(NodeId node) external;
     function payReward(NodeId node) external payable;
+    function nodeCreated(NodeId node, address nodeAddress) external payable;
     function removeAllowedReceiver(address receiver) external;
     function requestAllFees(NodeId node) external returns (uint256 requestId);
     function requestFees(NodeId node, Fair amount) external returns (uint256 requestId);
