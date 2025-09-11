@@ -22,7 +22,7 @@
 pragma solidity ^0.8.24;
 
 import { ICommittee } from "./ICommittee.sol";
-
+import { Fair } from "./units.sol";
 type NodeId is uint256;
 
 using {
@@ -47,6 +47,8 @@ interface INodes {
     event NodeOwnerChanged(NodeId indexed nodeId, address indexed oldOwner, address indexed newOwner);
     event NodeDomainNameChanged(NodeId indexed nodeId, address indexed nodeAddress, string newName);
     event NodeIpChanged(NodeId indexed nodeId, address indexed nodeAddress, bytes ip, uint16 port);
+    event SelfStakeRequirementUpdated(Fair indexed amount);
+    event SelfStakeProvided(NodeId indexed nodeId, Fair amount);
 
     function initialize(
         address initialAuthority,
@@ -58,7 +60,7 @@ interface INodes {
         bytes calldata ip,
         bytes32[2] calldata publicKey,
         uint16 port
-    ) external;
+    ) external payable;
     function registerPassiveNode(
         bytes calldata ip,
         uint16 port
@@ -77,6 +79,7 @@ interface INodes {
     function getPassiveNodeIdsForAddress(address nodeAddress) external view returns (NodeId[] memory nodeIds);
     function activeNodeExists(NodeId nodeId) external view returns (bool result);
     function passiveNodeExists(NodeId nodeId) external view returns (bool result);
+    function setSelfStakeRequirement(Fair amount) external;
 }
 
 // Slither flags as unused by interfaces but code is used
