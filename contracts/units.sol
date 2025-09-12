@@ -28,6 +28,7 @@ using {
     _fairAdd as +,
     _fairEqual as ==,
     _fairGreater as >,
+    _fairLess as <,
     _fairSub as -
 } for Fair global;
 
@@ -50,6 +51,10 @@ function _fairEqual(Fair a, Fair b) pure returns (bool equal) {
 
 function _fairGreater(Fair a, Fair b) pure returns (bool greater) {
     return Fair.unwrap(a) > Fair.unwrap(b);
+}
+
+function _fairLess(Fair a, Fair b) pure returns (bool less) {
+    return Fair.unwrap(a) < Fair.unwrap(b);
 }
 
 function _fairSub(Fair a, Fair b) pure returns (Fair subtraction) {
