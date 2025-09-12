@@ -58,7 +58,7 @@ interface INodes {
         bytes calldata ip,
         bytes32[2] calldata publicKey,
         uint16 port
-    ) external;
+    ) external payable;
     function registerPassiveNode(
         bytes calldata ip,
         uint16 port
