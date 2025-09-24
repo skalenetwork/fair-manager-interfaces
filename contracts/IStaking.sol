@@ -106,5 +106,6 @@ interface IStaking {
     function isNodeEnabled(NodeId node) external view returns (bool enabled);
     function isRequestUnlocked(uint256 requestId) external view returns (bool unlocked);
     function isWithinStakeLimit(NodeId node) external view returns (bool result);
+    function selfStakeRequirement() external view returns (Fair amount);
     function stakeLimit() external view returns (Fair amount);
 }
