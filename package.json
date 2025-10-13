@@ -18,5 +18,8 @@
     "lint": "yarn solhint 'contracts/**/*.sol'",
     "no-hooks": "git config core.hooksPath .git/hooks",
     "slither": "yarn compile && slither --hardhat-ignore-compile ."
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0"
   }
 }
