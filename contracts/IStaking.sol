@@ -74,6 +74,7 @@ interface IStaking {
     function setRetrievingDelay(Timestamp delay) external;
     function setStakeLimit(Fair limit) external;
     function stake(NodeId node) external payable;
+    function updateRewardWalletBeacon(IBeacon rewardWalletBeacon) external;
 
     // =============================================================
     //                       READ FUNCTIONS
