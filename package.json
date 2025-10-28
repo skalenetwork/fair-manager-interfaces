@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "packageManager": "yarn@4.6.0",
   "devDependencies": {
-    "@types/node": ">=18.0.0",
+    "@types/node": ">=24.9.1",
     "cspell": "^8.17.5",
     "hardhat": "^2.22.19",
     "solhint": "^5.0.5",
