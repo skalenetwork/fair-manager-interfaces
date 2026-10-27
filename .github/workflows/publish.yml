@@ -3,16 +3,8 @@
 name: publish
 on:
   push:
-    branches-ignore:
-      - stable
-      - beta
-      - develop
-  pull_request:
-    types: [closed]
-    branches:
-      - stable
-      - beta
-      - develop
+    branches: ['**']
+  delete:
 env:
   NODE_VERSION: 24
 
@@ -23,6 +15,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
     - uses: actions/checkout@v4
 
@@ -63,19 +56,23 @@ jobs:
 
   clean:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
+    if: github.event_name == 'delete' && github.event.ref_type == 'branch'
     steps:
-    - uses: actions/checkout@v4
-
     - name: Set up Node
       uses: actions/setup-node@v6
       with:
         node-version: ${{ env.NODE_VERSION }}
-        cache: yarn
 
     - name: Remove feature tag
+      env:
+        DELETED_BRANCH: ${{ github.event.ref }}
       run: |
-        export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
-        echo "Source branch: $SOURCE_BRANCH"
+        export TAG=$(echo ${DELETED_BRANCH##*/} | tr [:upper:] [:lower:] | tr -d [:space:])
+        echo "Tag: $TAG"
+        if [ -z "$(npm view @skalenetwork/fair-manager-interfaces dist-tags.$TAG)" ]
+        then
+            echo "Tag $TAG was not published, nothing to remove"
+            exit 0
+        fi
         npm install -g npm@latest
-        npm dist-tag rm @skalenetwork/fair-manager-interfaces $SOURCE_BRANCH
+        npm dist-tag rm @skalenetwork/fair-manager-interfaces $TAG
