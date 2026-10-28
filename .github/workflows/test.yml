@@ -2,7 +2,7 @@ name: test
 on: [push, pull_request]
 
 env:
-  NODE_VERSION: 22
+  NODE_VERSION: 24
 
 jobs:
   test:
@@ -14,7 +14,7 @@ jobs:
         submodules: true
 
     - name: Set up Node
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'yarn'
@@ -29,7 +29,7 @@ jobs:
       run: yarn fullCheck
 
     - name: slither
-      uses: crytic/slither-action@v0.4.0
+      uses: crytic/slither-action@v0.4.2
       with:
         ignore-compile: true
         node-version: ${{ env.NODE_VERSION }}
